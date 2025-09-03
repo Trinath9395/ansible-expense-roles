@@ -12,20 +12,25 @@
       name: nginx 
       state: started 
 
-  - name: remove html directory 
-    ansible.builtin.file: 
-      path: /usr/share/nginx/html 
-      state: absent 
+  - name: include common role 
+    include_role: 
+      name: common 
+      tasks_from: main 
 
-  - name: create html directory 
-    ansible.builtin.file: 
-      path: /usr/share/nginx/html 
-      state: directory 
+  # - name: remove html directory 
+  #   ansible.builtin.file: 
+  #     path: /usr/share/nginx/html 
+  #     state: absent 
 
-  - name: download the html code 
-    ansible.builtin.get_url: 
-      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-      dest: /tmp/frontend.zip 
+  # - name: create html directory 
+  #   ansible.builtin.file: 
+  #     path: /usr/share/nginx/html 
+  #     state: directory 
+
+  # - name: download the html code 
+  #   ansible.builtin.get_url: 
+  #     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+  #     dest: /tmp/frontend.zip 
   
   - name: unzip frontend code 
     ansible.builtin.unarchive: 
