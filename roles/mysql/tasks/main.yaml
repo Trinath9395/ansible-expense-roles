@@ -1,10 +1,10 @@
-- name: configure mysql sever 
-  hosts: mysql 
-  become: yes 
-  vars:
-    mysql_root_password: ExpenseApp@1 
-  tasks: 
-  
+# - name: configure mysql sever 
+#   hosts: mysql 
+#   become: yes 
+#   vars:
+#     mysql_root_password: ExpenseApp@1 
+#   tasks: 
+
   - name: install mysql pip package 
     ansible.builtin.pip:
       name: "{{ item }}"
